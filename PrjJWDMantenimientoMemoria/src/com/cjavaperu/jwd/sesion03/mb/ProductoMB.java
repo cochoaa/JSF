@@ -77,12 +77,9 @@ public class ProductoMB implements Serializable{
 		return "producto_listado"; // Pagina a Redireccionar						
 	}
 	
-
-	/*************************************************************************
-	 * Utilitarios
-	 * 
+	/**
+	 * Modificando conentaro XD
 	 */
-	
 	private void defaultValues(){
 		
 		//1ra Alternativa
