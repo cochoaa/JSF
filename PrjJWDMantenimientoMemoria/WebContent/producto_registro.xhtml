@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:ui="http://java.sun.com/jsf/facelets">	
+
+<h:head><title>Convertidores</title>
+</h:head>
+
+<h:body>
+<div align="center" style="width:550px">
+<h1>Convertidores</h1>
+<br/>
+<fieldset >
+<legend>Datos de Producto</legend>
+
+<h:form>
+	 <h:messages 	id="messageList" 
+	 				styleClass="error" 
+	 				showSummary="true" 
+	 				showDetail="true"
+	 				style="color:red" />
+	
+	<h:panelGrid columns="2"  >
+ 
+		<h:column>
+			<h:outputLabel 	for="id"	
+							value="Id"/>	
+		</h:column>
+		<h:column>
+  			<h:inputText 	id="id"
+							value="#{productoMB.producto.id}"
+							required="false"
+							readonly="true"
+							>
+			</h:inputText>
+  		</h:column>
+		
+		<h:column>
+			<h:outputLabel 	for="nombreCorto"	
+							value="Nombre Corto"/>	
+		</h:column>
+		<h:column >
+  			<h:inputText 	id="nombreCorto"
+							value="#{productoMB.producto.nombreCorto}"
+							required="true"
+							style="align:left">
+				 <f:validateLength minimum="3"  maximum="10"/>
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="nombreLargo"	
+							value="Nombre Largo"/>	
+		</h:column>
+		<h:column>
+  			<h:inputText 	id="nombreLargo"
+							value="#{productoMB.producto.nombreLargo}"
+							required="true"
+							style="width:250px"
+							>
+				 <f:validateLength minimum="10"  maximum="400"/>
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="precio"	
+							value="Precio"/>	
+		</h:column>
+
+		<h:column>
+  			<h:inputText 	id="precio"
+							value="#{productoMB.producto.precio}"
+							required="true"
+							style="width:50px">
+							
+				<f:convertNumber 	maxFractionDigits="2"
+									type="currency"
+									pattern="###,###.00"
+									locale="en_US"/>
+				<f:validateDoubleRange 	minimum="0.0"
+										/>			
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="stockMinimo"	
+							value="Stock Mínimo"/>
+		</h:column>
+
+		<h:column>
+  			<h:inputText 	id="stockMinimo"
+							value="#{productoMB.producto.stockMinimo}"
+							required="true"
+							style="width:50px">
+
+				<f:convertNumber 	type="number"
+									integerOnly="true"
+									locale="en_US"/>				
+				<f:validateDoubleRange 	minimum="5"
+										maximum="50"/>			
+				
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="stockMaximo"	
+							value="Stock Máximo"/>	
+		</h:column>
+
+		<h:column>
+  			<h:inputText 	id="stockMaximo"
+							value="#{productoMB.producto.stockMaximo}"
+							required="true"
+							style="width:50px">
+				<f:convertNumber 	type="number"
+									integerOnly="true"/>				
+							
+				<f:validateDoubleRange 	minimum="50"
+										maximum="500"/>			
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="fechaRegistro"	
+							value="Fecha Registro"/>	
+		</h:column>
+		<h:column>
+  			<h:inputText 	id="fechaRegistro"
+							value="#{productoMB.producto.fechaRegistro}"
+							required="false">			
+				 <f:convertDateTime pattern="dd/MM/yyyy"/>
+				 
+			</h:inputText>
+  		</h:column>
+
+		<h:column>
+			<h:outputLabel 	for="observaciones"	
+							value="Observaciones"/>	
+		</h:column>
+
+		<h:column>
+  			<h:inputTextarea 	id="observaciones"
+								value="#{productoMB.producto.observaciones}"
+								required="true"
+								style="width:200px"
+								cols="15"
+								rows="5">
+			</h:inputTextarea>
+  		</h:column>
+
+
+  	  	<h:column>
+   			<h:commandButton 	value="Agregar" 
+                   				action="#{productoMB.agregar}"/>
+        </h:column>           		
+   		<h:column>	
+   			<h:commandButton 	value="Cancelar" 
+                   				action="convertidoresResultado"/>
+    	</h:column>
+    </h:panelGrid>               		
+</h:form>
+
+</fieldset>
+</div>
+</h:body>
+</html>

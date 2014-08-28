@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	
+	<managed-bean>
+		<managed-bean-name>productoMB</managed-bean-name>
+		<managed-bean-class>
+			com.cjavaperu.jwd.sesion03.mb.ProductoMB
+		</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+
+
+
+	<navigation-rule>
+		<description></description>
+		<from-view-id>/*</from-view-id>
+
+		<navigation-case>
+			<from-outcome>producto_registro</from-outcome>
+			<to-view-id>producto_registro.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>producto_listado</from-outcome>
+			<to-view-id>producto_listado.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+</faces-config>
